@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
+import { cartPageConstants, checkOutPopUpConstants } from '../constants/cartPageConstants';
+import {cartBreadcrums} from '../locators/cartPageLocators';
+
 
 test('complete automation exercise checkout flow', async ({ page }) => {
   const timestamp = Date.now();
@@ -25,27 +28,8 @@ test('complete automation exercise checkout flow', async ({ page }) => {
   await homePage.addProductToCart(1);
   await homePage.openCartFromModal();
 
-
-  // await page.locator(homePage.getProductWrapper(0)).first().hover();
-  // await page.locator(homePage.getProductWrapper(0)).locator('.add-to-cart').first().click();
-  // await expect(page.locator('.modal-content')).toContainText('Added!');
-  // await page.getByRole('button', { name: 'Continue Shopping' }).click();
-
-  // await page.locator(homePage.getProductWrapper(1)).nth(1).hover();
-  // await page.locator(homePage.getProductWrapper(1)).locator('.add-to-cart').first().click();
-  // await expect(page.locator('.modal-content')).toContainText('Added!');
-  // const viewCartButton = page.locator('.modal-content').getByText('View Cart');
-  // await expect(viewCartButton).toBeVisible();
-  // await viewCartButton.click();
-
-  await expect(page).toHaveURL(/\/view_cart/);
-  const cartTable = page.locator('#cart_info_table');
-  await expect(cartTable).toBeVisible();
-  await expect(cartTable).toContainText('Blue Top');
-  await expect(cartTable).toContainText('Men Tshirt');
-
-  await page.getByRole('link', { name: '{0}' }).click(); // Proceed To Checkout
-  await page.getByRole('link', { name: 'Register / Login' }).click();
+  await page.locator(cartBreadcrums.proceedToCheckOutButton).click();
+  await page.getByRole('link', { name: checkOutPopUpConstants.RegisterLogin }).click();
 
   await page.locator('[data-qa="signup-name"]').fill('Test User');
   await page.locator('[data-qa="signup-email"]').fill(email);

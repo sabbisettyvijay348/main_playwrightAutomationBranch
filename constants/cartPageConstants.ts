@@ -1,7 +1,10 @@
 export enum cartPageConstants {
-    
-    ShoppingCart = 'Shopping Cart',
-    ProceedToCheckout = 'Proceed To Checkout'
-    
-
+    ProceedToCheckout = 'Proceed To Checkout',
+    ShoppingCart = 'Shopping Cart'
 }
+
+export enum checkOutPopUpConstants {
+    ContinueOnCartPopUp = 'Continue Shopping',
+    RegisterLogin = 'Register / Login'
+}
+    

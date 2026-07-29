@@ -12,11 +12,5 @@ export enum signUpPageLocators {
 
 // input[data-qa="login-password"]
 
-
-
-
-
-
-
 }
     
