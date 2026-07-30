@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { cartPageConstants, checkOutPopUpConstants } from '../constants/cartPageConstants';
 import {cartBreadcrums} from '../locators/cartPageLocators';
+import { signUpPageLocators } from '../locators/signUpPageLoc';
 
 
 test('complete automation exercise checkout flow', async ({ page }) => {
@@ -34,9 +35,10 @@ test('complete automation exercise checkout flow', async ({ page }) => {
   await page.locator('[data-qa="signup-name"]').fill('Test User');
   await page.locator('[data-qa="signup-email"]').fill(email);
   await page.locator('[data-qa="signup-button"]').click();
+  await page.selectOption('[data-qa="country"]', 'United States');
 
   await expect(page.locator('h2')).toContainText('Enter Account Information');
-  await page.locator('#id_gender1').check();
+  await page.locator(signUpPageLocators.signUpGenderRadioButton1).check();
   await page.locator('[data-qa="password"]').fill(password);
   await page.locator('[data-qa="days"]').selectOption('10');
   await page.locator('[data-qa="months"]').selectOption('January');
