@@ -51,7 +51,4 @@ test('Patch To All Product List', async ({request}) => {
   console.log(body);
   const header = res.headers();
   console.log(header);
-
-  //const Res
-
 });

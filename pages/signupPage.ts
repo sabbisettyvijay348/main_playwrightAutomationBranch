@@ -1,25 +1,32 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from './basePage';
+import { signUpPageLocators } from '../locators/signUpPageLoc';
+import { signIn_SignUpConstants, signUpLabalConstants } from '../constants/SignInConstants';
 
 export class SignupPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
 
+
+
+
+
+
   async openRegisterLogin() {
-    await this.page.getByRole('link', { name: 'Register / Login' }).click();
+    await this.page.getByRole('link', { name: 'Signup / Login' }).click();
   }
 
   async signup(name: string, email: string) {
-    await this.page.locator('[data-qa="signup-name"]').fill(name);
-    await this.page.locator('[data-qa="signup-email"]').fill(email);
-    await this.page.locator('[data-qa="signup-button"]').click();
+    await this.page.locator(signUpPageLocators.signUpLabelfields, { hasText: signUpLabalConstants.SignupName }).fill(name);
+    await this.page.locator(signUpPageLocators.signUpLabelfields, { hasText: signUpLabalConstants.SignupEmail }).fill(email);
+    await this.page.locator(signUpPageLocators.signUpButtonn, { hasText: signIn_SignUpConstants.SignupButton }).click();
   }
 
   async login(email: string, password: string) {
-    await this.page.locator('[data-qa="login-email"]').fill(email);
-    await this.page.locator('[data-qa="login-password"]').fill(password);
-    await this.page.locator('[data-qa="login-button"]').click();
+    await this.page.locator(signUpPageLocators.signUpLabelfields, { hasText: signUpLabalConstants.LoginEmail }).fill(email);
+    await this.page.locator(signUpPageLocators.signUpLabelfields, { hasText: signUpLabalConstants.LoginPassword }).fill(password);
+    await this.page.locator(signUpPageLocators.signUpButtonn, { hasText: signUpLabalConstants.LoginButton }).click();
   }
 
   async verifyLoginSuccess(userName: string) {
