@@ -83,3 +83,14 @@ test('complete automation exercise checkout flow', async ({ page }) => {
   await page.getByRole('link', { name: 'Continue' }).click();
   await page.close();
 });
+
+
+// ebfkjwhfjkwfh
+/*
+*ghjknfldnfwnfwefnwenkfnwlken
+! hvjefhjwefbhkwbfkwebfkjwebfkbkjwebkjwbkjebfkwe
+? bfgkjerbgegjkergkjerbgjkerbgkerkgergkjer
+TODO; nfjkwbfgkrjkgbregwrgwrjvndfkjfneuf
+
+*/
+

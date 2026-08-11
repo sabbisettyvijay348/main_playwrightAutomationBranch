@@ -40,6 +40,7 @@ export default defineConfig({
     headless: false,
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    storageState: 'storageState.jsoon'
   },
 
   /* Configure projects for major browsers */
